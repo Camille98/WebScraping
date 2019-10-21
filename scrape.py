@@ -6,7 +6,7 @@ import datetime
 visited = set(["http://toscrape.com/"])
 
 #seed set
-dq = deque([["http://toscrape.com/", "", 0], ["http://mentalfloss.com/article/53792/17-ancient-abandoned-websites-still-work", "", 0], ["http://www.fabpedigree.com/james/mathmen.htm", "", 0], ["http://scratchpads.eu/explore/sites-list", "", 0]])
+dq = deque([["http://toscrape.com/", "", 0], ["http://www.fabpedigree.com/james/mathmen.htm", "", 0], ["http://scratchpads.eu/explore/sites-list", "", 0]])
 
 #Maximum depth to go through
 max_depth = 2
@@ -39,8 +39,14 @@ while dq:
 
                     
                     if href.startswith("http"):
+
+                        #Gathers time stamp
                         ts = datetime.datetime.now()
+
+                        #Formats time
                         ts.strftime("%m/%d/%Y")
+
+                        #write index to index file
                         line = str(i) + ".html " + str(ts) + " " + href + "\n"
                         urlfile.write(line)
                         i += 1
